@@ -4,7 +4,7 @@
 // - protoc             v6.30.2
 // source: discovery_service.proto
 
-package discovery_service
+package protos
 
 import (
 	context "context"

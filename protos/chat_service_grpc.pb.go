@@ -4,7 +4,7 @@
 // - protoc             v6.30.2
 // source: chat_service.proto
 
-package chat_service
+package protos
 
 import (
 	context "context"

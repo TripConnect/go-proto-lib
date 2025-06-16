@@ -4,7 +4,7 @@
 // 	protoc        v6.30.2
 // source: chat_service.proto
 
-package chat_service
+package protos
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -753,7 +753,7 @@ const file_chat_service_proto_rawDesc = "" +
 	"\x13SearchConversations\x120.backend.chat_service.SearchConversationsRequest\x1a#.backend.chat_service.Conversations\"\x00\x12h\n" +
 	"\x11CreateChatMessage\x12..backend.chat_service.CreateChatMessageRequest\x1a!.backend.chat_service.ChatMessage\"\x00\x12e\n" +
 	"\x0fGetChatMessages\x12,.backend.chat_service.GetChatMessagesRequest\x1a\".backend.chat_service.ChatMessages\"\x00\x12k\n" +
-	"\x12SearchChatMessages\x12/.backend.chat_service.SearchChatMessagesRequest\x1a\".backend.chat_service.ChatMessages\"\x00B%Z#github.com/TripConnect/chat-serviceb\x06proto3"
+	"\x12SearchChatMessages\x12/.backend.chat_service.SearchChatMessagesRequest\x1a\".backend.chat_service.ChatMessages\"\x00B,Z*github.com/TripConnect/chat_service;protosb\x06proto3"
 
 var (
 	file_chat_service_proto_rawDescOnce sync.Once

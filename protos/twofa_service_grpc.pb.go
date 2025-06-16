@@ -4,7 +4,7 @@
 // - protoc             v6.30.2
 // source: twofa_service.proto
 
-package twofa_service
+package protos
 
 import (
 	context "context"

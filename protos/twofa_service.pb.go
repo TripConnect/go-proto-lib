@@ -4,7 +4,7 @@
 // 	protoc        v6.30.2
 // source: twofa_service.proto
 
-package twofa_service
+package protos
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -362,7 +362,7 @@ const file_twofa_service_proto_rawDesc = "" +
 	"\x1eTwoFactorAuthenticationService\x12j\n" +
 	"\x0fGenerateSetting\x12).backend.twofa_service.Generate2faRequest\x1a*.backend.twofa_service.Generate2faResponse\"\x00\x12d\n" +
 	"\rCreateSetting\x12'.backend.twofa_service.Create2faRequest\x1a(.backend.twofa_service.Create2faResponse\"\x00\x12k\n" +
-	"\x10ValidateResource\x12).backend.twofa_service.Validate2faRequest\x1a*.backend.twofa_service.Validate2faResponse\"\x00B&Z$github.com/TripConnect/twofa-serviceb\x06proto3"
+	"\x10ValidateResource\x12).backend.twofa_service.Validate2faRequest\x1a*.backend.twofa_service.Validate2faResponse\"\x00B-Z+github.com/TripConnect/twofa_service;protosb\x06proto3"
 
 var (
 	file_twofa_service_proto_rawDescOnce sync.Once

@@ -4,7 +4,7 @@
 // 	protoc        v6.30.2
 // source: user_service.proto
 
-package user_service
+package protos
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -550,7 +550,7 @@ const file_user_service_proto_rawDesc = "" +
 	"\bFindUser\x12%.backend.user_service.FindUserRequest\x1a\x1e.backend.user_service.UserInfo\"\x00\x12T\n" +
 	"\bGetUsers\x12%.backend.user_service.GetUsersRequest\x1a\x1f.backend.user_service.UsersInfo\"\x00\x12X\n" +
 	"\n" +
-	"SearchUser\x12'.backend.user_service.SearchUserRequest\x1a\x1f.backend.user_service.UsersInfo\"\x00B%Z#github.com/TripConnect/user-serviceb\x06proto3"
+	"SearchUser\x12'.backend.user_service.SearchUserRequest\x1a\x1f.backend.user_service.UsersInfo\"\x00B,Z*github.com/TripConnect/user_service;protosb\x06proto3"
 
 var (
 	file_user_service_proto_rawDescOnce sync.Once
