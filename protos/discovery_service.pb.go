@@ -4,7 +4,7 @@
 // 	protoc        v6.30.2
 // source: discovery_service.proto
 
-package user_service
+package discovery_service
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -128,7 +128,7 @@ const file_discovery_service_proto_rawDesc = "" +
 	"\x04host\x18\x01 \x01(\tR\x04host\x12\x12\n" +
 	"\x04port\x18\x02 \x01(\x05R\x04port2y\n" +
 	"\x10DiscoveryService\x12e\n" +
-	"\bDiscover\x12+.backend.discovery_service.DiscoveryRequest\x1a*.backend.discovery_service.ServiceInstance\"\x00B%Z#github.com/TripConnect/user-serviceb\x06proto3"
+	"\bDiscover\x12+.backend.discovery_service.DiscoveryRequest\x1a*.backend.discovery_service.ServiceInstance\"\x00B*Z(github.com/TripConnect/discovery-serviceb\x06proto3"
 
 var (
 	file_discovery_service_proto_rawDescOnce sync.Once
