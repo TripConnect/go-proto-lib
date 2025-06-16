@@ -404,6 +404,8 @@ type SearchChatMessagesRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	ConversationId *string                `protobuf:"bytes,1,opt,name=conversation_id,json=conversationId,proto3,oneof" json:"conversation_id,omitempty"`
 	Term           string                 `protobuf:"bytes,2,opt,name=term,proto3" json:"term,omitempty"`
+	PageNumber     int32                  `protobuf:"varint,3,opt,name=page_number,json=pageNumber,proto3" json:"page_number,omitempty"`
+	PageSize       int32                  `protobuf:"varint,4,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -450,6 +452,20 @@ func (x *SearchChatMessagesRequest) GetTerm() string {
 		return x.Term
 	}
 	return ""
+}
+
+func (x *SearchChatMessagesRequest) GetPageNumber() int32 {
+	if x != nil {
+		return x.PageNumber
+	}
+	return 0
+}
+
+func (x *SearchChatMessagesRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
 }
 
 type ChatMessages struct {
@@ -720,10 +736,13 @@ const file_chat_service_proto_rawDesc = "" +
 	"\x05after\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampH\x01R\x05after\x88\x01\x01\x12\x1b\n" +
 	"\tpage_size\x18\x04 \x01(\x05R\bpageSizeB\t\n" +
 	"\a_beforeB\b\n" +
-	"\x06_after\"q\n" +
+	"\x06_after\"\xaf\x01\n" +
 	"\x19SearchChatMessagesRequest\x12,\n" +
 	"\x0fconversation_id\x18\x01 \x01(\tH\x00R\x0econversationId\x88\x01\x01\x12\x12\n" +
-	"\x04term\x18\x02 \x01(\tR\x04termB\x12\n" +
+	"\x04term\x18\x02 \x01(\tR\x04term\x12\x1f\n" +
+	"\vpage_number\x18\x03 \x01(\x05R\n" +
+	"pageNumber\x12\x1b\n" +
+	"\tpage_size\x18\x04 \x01(\x05R\bpageSizeB\x12\n" +
 	"\x10_conversation_id\"M\n" +
 	"\fChatMessages\x12=\n" +
 	"\bmessages\x18\x01 \x03(\v2!.backend.chat_service.ChatMessageR\bmessages\"\xc8\x01\n" +
