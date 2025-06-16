@@ -1,6 +1,11 @@
 # Introduce
 The proto definition for golang language.
 
+# Installation
+```sh
+go get github.com/tripconnect/go-proto-lib@latest
+```
+
 # Build
 Clone proto definition files
 ```sh
