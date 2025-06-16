@@ -14,5 +14,6 @@ git clone git@github.com:TripConnect/proto-storage.git
 ```
 Build golang proto
 ```sh
+cd go-proto-lib
 protoc --go_out=./protos --go_opt=paths=source_relative --go-grpc_out=./protos --go-grpc_opt=paths=source_relative --proto_path=proto-storage/protos ./proto-storage/protos/*.proto
 ```
