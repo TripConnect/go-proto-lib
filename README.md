@@ -2,9 +2,13 @@
 The proto definition for golang language.
 
 # Installation
-Install package with git branch as pseudo-version
+Install with latest version
 ```sh
-go get github.com/tripconnect/go-proto-lib@master
+go get github.com/tripconnect/go-proto-lib@latest
+```
+Install with specific version corresponding with specific github tag
+```sh
+go get github.com/tripconnect/go-proto-lib@v1.0.0
 ```
 
 # Usage
@@ -36,5 +40,6 @@ Publish to github registry
 ```sh
 git add .
 git commit -m "build: something"
-git push
+git tag v<version> # ex: git tag v1.0.0
+git push origin v<version> # ex: git push origin v1.0.0
 ```
