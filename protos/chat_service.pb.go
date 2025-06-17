@@ -337,7 +337,7 @@ type GetChatMessagesRequest struct {
 	ConversationId string                 `protobuf:"bytes,1,opt,name=conversation_id,json=conversationId,proto3" json:"conversation_id,omitempty"`
 	Before         *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=before,proto3,oneof" json:"before,omitempty"`
 	After          *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=after,proto3,oneof" json:"after,omitempty"`
-	PageSize       int32                  `protobuf:"varint,4,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	Limit          int32                  `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -393,9 +393,9 @@ func (x *GetChatMessagesRequest) GetAfter() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *GetChatMessagesRequest) GetPageSize() int32 {
+func (x *GetChatMessagesRequest) GetLimit() int32 {
 	if x != nil {
-		return x.PageSize
+		return x.Limit
 	}
 	return 0
 }
@@ -404,8 +404,9 @@ type SearchChatMessagesRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	ConversationId *string                `protobuf:"bytes,1,opt,name=conversation_id,json=conversationId,proto3,oneof" json:"conversation_id,omitempty"`
 	Term           string                 `protobuf:"bytes,2,opt,name=term,proto3" json:"term,omitempty"`
-	PageNumber     int32                  `protobuf:"varint,3,opt,name=page_number,json=pageNumber,proto3" json:"page_number,omitempty"`
-	PageSize       int32                  `protobuf:"varint,4,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	Before         *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=before,proto3,oneof" json:"before,omitempty"`
+	After          *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=after,proto3,oneof" json:"after,omitempty"`
+	Limit          int32                  `protobuf:"varint,5,opt,name=limit,proto3" json:"limit,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -454,16 +455,23 @@ func (x *SearchChatMessagesRequest) GetTerm() string {
 	return ""
 }
 
-func (x *SearchChatMessagesRequest) GetPageNumber() int32 {
+func (x *SearchChatMessagesRequest) GetBefore() *timestamppb.Timestamp {
 	if x != nil {
-		return x.PageNumber
+		return x.Before
 	}
-	return 0
+	return nil
 }
 
-func (x *SearchChatMessagesRequest) GetPageSize() int32 {
+func (x *SearchChatMessagesRequest) GetAfter() *timestamppb.Timestamp {
 	if x != nil {
-		return x.PageSize
+		return x.After
+	}
+	return nil
+}
+
+func (x *SearchChatMessagesRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
 	}
 	return 0
 }
@@ -729,21 +737,23 @@ const file_chat_service_proto_rawDesc = "" +
 	"\x0fconversation_id\x18\x01 \x01(\tR\x0econversationId\x12 \n" +
 	"\ffrom_user_id\x18\x02 \x01(\tR\n" +
 	"fromUserId\x12\x18\n" +
-	"\acontent\x18\x03 \x01(\tR\acontent\"\xe3\x01\n" +
+	"\acontent\x18\x03 \x01(\tR\acontent\"\xdc\x01\n" +
 	"\x16GetChatMessagesRequest\x12'\n" +
 	"\x0fconversation_id\x18\x01 \x01(\tR\x0econversationId\x127\n" +
 	"\x06before\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampH\x00R\x06before\x88\x01\x01\x125\n" +
-	"\x05after\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampH\x01R\x05after\x88\x01\x01\x12\x1b\n" +
-	"\tpage_size\x18\x04 \x01(\x05R\bpageSizeB\t\n" +
+	"\x05after\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampH\x01R\x05after\x88\x01\x01\x12\x14\n" +
+	"\x05limit\x18\x04 \x01(\x05R\x05limitB\t\n" +
 	"\a_beforeB\b\n" +
-	"\x06_after\"\xaf\x01\n" +
+	"\x06_after\"\x8c\x02\n" +
 	"\x19SearchChatMessagesRequest\x12,\n" +
 	"\x0fconversation_id\x18\x01 \x01(\tH\x00R\x0econversationId\x88\x01\x01\x12\x12\n" +
-	"\x04term\x18\x02 \x01(\tR\x04term\x12\x1f\n" +
-	"\vpage_number\x18\x03 \x01(\x05R\n" +
-	"pageNumber\x12\x1b\n" +
-	"\tpage_size\x18\x04 \x01(\x05R\bpageSizeB\x12\n" +
-	"\x10_conversation_id\"M\n" +
+	"\x04term\x18\x02 \x01(\tR\x04term\x127\n" +
+	"\x06before\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampH\x01R\x06before\x88\x01\x01\x125\n" +
+	"\x05after\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampH\x02R\x05after\x88\x01\x01\x12\x14\n" +
+	"\x05limit\x18\x05 \x01(\x05R\x05limitB\x12\n" +
+	"\x10_conversation_idB\t\n" +
+	"\a_beforeB\b\n" +
+	"\x06_after\"M\n" +
 	"\fChatMessages\x12=\n" +
 	"\bmessages\x18\x01 \x03(\v2!.backend.chat_service.ChatMessageR\bmessages\"\xc8\x01\n" +
 	"\fConversation\x12\x0e\n" +
@@ -807,28 +817,30 @@ var file_chat_service_proto_depIdxs = []int32{
 	0,  // 1: backend.chat_service.CreateConversationRequest.type:type_name -> backend.chat_service.ConversationType
 	11, // 2: backend.chat_service.GetChatMessagesRequest.before:type_name -> google.protobuf.Timestamp
 	11, // 3: backend.chat_service.GetChatMessagesRequest.after:type_name -> google.protobuf.Timestamp
-	1,  // 4: backend.chat_service.ChatMessages.messages:type_name -> backend.chat_service.ChatMessage
-	0,  // 5: backend.chat_service.Conversation.type:type_name -> backend.chat_service.ConversationType
-	11, // 6: backend.chat_service.Conversation.created_at:type_name -> google.protobuf.Timestamp
-	0,  // 7: backend.chat_service.SearchConversationsRequest.type:type_name -> backend.chat_service.ConversationType
-	8,  // 8: backend.chat_service.Conversations.conversations:type_name -> backend.chat_service.Conversation
-	3,  // 9: backend.chat_service.ChatService.CreateConversation:input_type -> backend.chat_service.CreateConversationRequest
-	2,  // 10: backend.chat_service.ChatService.FindConversation:input_type -> backend.chat_service.FindConversationRequest
-	9,  // 11: backend.chat_service.ChatService.SearchConversations:input_type -> backend.chat_service.SearchConversationsRequest
-	4,  // 12: backend.chat_service.ChatService.CreateChatMessage:input_type -> backend.chat_service.CreateChatMessageRequest
-	5,  // 13: backend.chat_service.ChatService.GetChatMessages:input_type -> backend.chat_service.GetChatMessagesRequest
-	6,  // 14: backend.chat_service.ChatService.SearchChatMessages:input_type -> backend.chat_service.SearchChatMessagesRequest
-	8,  // 15: backend.chat_service.ChatService.CreateConversation:output_type -> backend.chat_service.Conversation
-	8,  // 16: backend.chat_service.ChatService.FindConversation:output_type -> backend.chat_service.Conversation
-	10, // 17: backend.chat_service.ChatService.SearchConversations:output_type -> backend.chat_service.Conversations
-	1,  // 18: backend.chat_service.ChatService.CreateChatMessage:output_type -> backend.chat_service.ChatMessage
-	7,  // 19: backend.chat_service.ChatService.GetChatMessages:output_type -> backend.chat_service.ChatMessages
-	7,  // 20: backend.chat_service.ChatService.SearchChatMessages:output_type -> backend.chat_service.ChatMessages
-	15, // [15:21] is the sub-list for method output_type
-	9,  // [9:15] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	11, // 4: backend.chat_service.SearchChatMessagesRequest.before:type_name -> google.protobuf.Timestamp
+	11, // 5: backend.chat_service.SearchChatMessagesRequest.after:type_name -> google.protobuf.Timestamp
+	1,  // 6: backend.chat_service.ChatMessages.messages:type_name -> backend.chat_service.ChatMessage
+	0,  // 7: backend.chat_service.Conversation.type:type_name -> backend.chat_service.ConversationType
+	11, // 8: backend.chat_service.Conversation.created_at:type_name -> google.protobuf.Timestamp
+	0,  // 9: backend.chat_service.SearchConversationsRequest.type:type_name -> backend.chat_service.ConversationType
+	8,  // 10: backend.chat_service.Conversations.conversations:type_name -> backend.chat_service.Conversation
+	3,  // 11: backend.chat_service.ChatService.CreateConversation:input_type -> backend.chat_service.CreateConversationRequest
+	2,  // 12: backend.chat_service.ChatService.FindConversation:input_type -> backend.chat_service.FindConversationRequest
+	9,  // 13: backend.chat_service.ChatService.SearchConversations:input_type -> backend.chat_service.SearchConversationsRequest
+	4,  // 14: backend.chat_service.ChatService.CreateChatMessage:input_type -> backend.chat_service.CreateChatMessageRequest
+	5,  // 15: backend.chat_service.ChatService.GetChatMessages:input_type -> backend.chat_service.GetChatMessagesRequest
+	6,  // 16: backend.chat_service.ChatService.SearchChatMessages:input_type -> backend.chat_service.SearchChatMessagesRequest
+	8,  // 17: backend.chat_service.ChatService.CreateConversation:output_type -> backend.chat_service.Conversation
+	8,  // 18: backend.chat_service.ChatService.FindConversation:output_type -> backend.chat_service.Conversation
+	10, // 19: backend.chat_service.ChatService.SearchConversations:output_type -> backend.chat_service.Conversations
+	1,  // 20: backend.chat_service.ChatService.CreateChatMessage:output_type -> backend.chat_service.ChatMessage
+	7,  // 21: backend.chat_service.ChatService.GetChatMessages:output_type -> backend.chat_service.ChatMessages
+	7,  // 22: backend.chat_service.ChatService.SearchChatMessages:output_type -> backend.chat_service.ChatMessages
+	17, // [17:23] is the sub-list for method output_type
+	11, // [11:17] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_chat_service_proto_init() }
