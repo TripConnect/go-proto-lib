@@ -21,6 +21,52 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type ValidationStatus int32
+
+const (
+	ValidationStatus_INVALID ValidationStatus = 0
+	ValidationStatus_VALID   ValidationStatus = 1
+)
+
+// Enum value maps for ValidationStatus.
+var (
+	ValidationStatus_name = map[int32]string{
+		0: "INVALID",
+		1: "VALID",
+	}
+	ValidationStatus_value = map[string]int32{
+		"INVALID": 0,
+		"VALID":   1,
+	}
+)
+
+func (x ValidationStatus) Enum() *ValidationStatus {
+	p := new(ValidationStatus)
+	*p = x
+	return p
+}
+
+func (x ValidationStatus) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ValidationStatus) Descriptor() protoreflect.EnumDescriptor {
+	return file_twofa_service_proto_enumTypes[0].Descriptor()
+}
+
+func (ValidationStatus) Type() protoreflect.EnumType {
+	return &file_twofa_service_proto_enumTypes[0]
+}
+
+func (x ValidationStatus) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ValidationStatus.Descriptor instead.
+func (ValidationStatus) EnumDescriptor() ([]byte, []int) {
+	return file_twofa_service_proto_rawDescGZIP(), []int{0}
+}
+
 type Generate2FaRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Label         string                 `protobuf:"bytes,1,opt,name=label,proto3" json:"label,omitempty"`
@@ -284,7 +330,7 @@ func (x *Validate2FaRequest) GetOtp() string {
 type Validate2FaResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Status        string                 `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
+	Status        ValidationStatus       `protobuf:"varint,2,opt,name=status,proto3,enum=backend.twofa_service.ValidationStatus" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -326,11 +372,11 @@ func (x *Validate2FaResponse) GetSuccess() bool {
 	return false
 }
 
-func (x *Validate2FaResponse) GetStatus() string {
+func (x *Validate2FaResponse) GetStatus() ValidationStatus {
 	if x != nil {
 		return x.Status
 	}
-	return ""
+	return ValidationStatus_INVALID
 }
 
 var File_twofa_service_proto protoreflect.FileDescriptor
@@ -355,10 +401,13 @@ const file_twofa_service_proto_rawDesc = "" +
 	"\x12Validate2faRequest\x12\x1f\n" +
 	"\vresource_id\x18\x01 \x01(\tR\n" +
 	"resourceId\x12\x10\n" +
-	"\x03otp\x18\x02 \x01(\tR\x03otp\"G\n" +
+	"\x03otp\x18\x02 \x01(\tR\x03otp\"p\n" +
 	"\x13Validate2faResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x16\n" +
-	"\x06status\x18\x02 \x01(\tR\x06status2\xdf\x02\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\x12?\n" +
+	"\x06status\x18\x02 \x01(\x0e2'.backend.twofa_service.ValidationStatusR\x06status**\n" +
+	"\x10ValidationStatus\x12\v\n" +
+	"\aINVALID\x10\x00\x12\t\n" +
+	"\x05VALID\x10\x012\xdf\x02\n" +
 	"\x1eTwoFactorAuthenticationService\x12j\n" +
 	"\x0fGenerateSetting\x12).backend.twofa_service.Generate2faRequest\x1a*.backend.twofa_service.Generate2faResponse\"\x00\x12d\n" +
 	"\rCreateSetting\x12'.backend.twofa_service.Create2faRequest\x1a(.backend.twofa_service.Create2faResponse\"\x00\x12k\n" +
@@ -376,27 +425,30 @@ func file_twofa_service_proto_rawDescGZIP() []byte {
 	return file_twofa_service_proto_rawDescData
 }
 
+var file_twofa_service_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_twofa_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_twofa_service_proto_goTypes = []any{
-	(*Generate2FaRequest)(nil),  // 0: backend.twofa_service.Generate2faRequest
-	(*Generate2FaResponse)(nil), // 1: backend.twofa_service.Generate2faResponse
-	(*Create2FaRequest)(nil),    // 2: backend.twofa_service.Create2faRequest
-	(*Create2FaResponse)(nil),   // 3: backend.twofa_service.Create2faResponse
-	(*Validate2FaRequest)(nil),  // 4: backend.twofa_service.Validate2faRequest
-	(*Validate2FaResponse)(nil), // 5: backend.twofa_service.Validate2faResponse
+	(ValidationStatus)(0),       // 0: backend.twofa_service.ValidationStatus
+	(*Generate2FaRequest)(nil),  // 1: backend.twofa_service.Generate2faRequest
+	(*Generate2FaResponse)(nil), // 2: backend.twofa_service.Generate2faResponse
+	(*Create2FaRequest)(nil),    // 3: backend.twofa_service.Create2faRequest
+	(*Create2FaResponse)(nil),   // 4: backend.twofa_service.Create2faResponse
+	(*Validate2FaRequest)(nil),  // 5: backend.twofa_service.Validate2faRequest
+	(*Validate2FaResponse)(nil), // 6: backend.twofa_service.Validate2faResponse
 }
 var file_twofa_service_proto_depIdxs = []int32{
-	0, // 0: backend.twofa_service.TwoFactorAuthenticationService.GenerateSetting:input_type -> backend.twofa_service.Generate2faRequest
-	2, // 1: backend.twofa_service.TwoFactorAuthenticationService.CreateSetting:input_type -> backend.twofa_service.Create2faRequest
-	4, // 2: backend.twofa_service.TwoFactorAuthenticationService.ValidateResource:input_type -> backend.twofa_service.Validate2faRequest
-	1, // 3: backend.twofa_service.TwoFactorAuthenticationService.GenerateSetting:output_type -> backend.twofa_service.Generate2faResponse
-	3, // 4: backend.twofa_service.TwoFactorAuthenticationService.CreateSetting:output_type -> backend.twofa_service.Create2faResponse
-	5, // 5: backend.twofa_service.TwoFactorAuthenticationService.ValidateResource:output_type -> backend.twofa_service.Validate2faResponse
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0, // 0: backend.twofa_service.Validate2faResponse.status:type_name -> backend.twofa_service.ValidationStatus
+	1, // 1: backend.twofa_service.TwoFactorAuthenticationService.GenerateSetting:input_type -> backend.twofa_service.Generate2faRequest
+	3, // 2: backend.twofa_service.TwoFactorAuthenticationService.CreateSetting:input_type -> backend.twofa_service.Create2faRequest
+	5, // 3: backend.twofa_service.TwoFactorAuthenticationService.ValidateResource:input_type -> backend.twofa_service.Validate2faRequest
+	2, // 4: backend.twofa_service.TwoFactorAuthenticationService.GenerateSetting:output_type -> backend.twofa_service.Generate2faResponse
+	4, // 5: backend.twofa_service.TwoFactorAuthenticationService.CreateSetting:output_type -> backend.twofa_service.Create2faResponse
+	6, // 6: backend.twofa_service.TwoFactorAuthenticationService.ValidateResource:output_type -> backend.twofa_service.Validate2faResponse
+	4, // [4:7] is the sub-list for method output_type
+	1, // [1:4] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_twofa_service_proto_init() }
@@ -409,13 +461,14 @@ func file_twofa_service_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_twofa_service_proto_rawDesc), len(file_twofa_service_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_twofa_service_proto_goTypes,
 		DependencyIndexes: file_twofa_service_proto_depIdxs,
+		EnumInfos:         file_twofa_service_proto_enumTypes,
 		MessageInfos:      file_twofa_service_proto_msgTypes,
 	}.Build()
 	File_twofa_service_proto = out.File

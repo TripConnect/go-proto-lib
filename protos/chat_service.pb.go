@@ -598,10 +598,11 @@ func (x *Conversation) GetCreatedAt() *timestamppb.Timestamp {
 
 type SearchConversationsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Type          *ConversationType      `protobuf:"varint,1,opt,name=type,proto3,enum=backend.chat_service.ConversationType,oneof" json:"type,omitempty"`
-	Term          string                 `protobuf:"bytes,2,opt,name=term,proto3" json:"term,omitempty"`
-	PageNumber    int32                  `protobuf:"varint,3,opt,name=page_number,json=pageNumber,proto3" json:"page_number,omitempty"`
-	PageSize      int32                  `protobuf:"varint,4,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Type          *ConversationType      `protobuf:"varint,2,opt,name=type,proto3,enum=backend.chat_service.ConversationType,oneof" json:"type,omitempty"`
+	Term          string                 `protobuf:"bytes,3,opt,name=term,proto3" json:"term,omitempty"`
+	PageNumber    int32                  `protobuf:"varint,4,opt,name=page_number,json=pageNumber,proto3" json:"page_number,omitempty"`
+	PageSize      int32                  `protobuf:"varint,5,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -634,6 +635,13 @@ func (x *SearchConversationsRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use SearchConversationsRequest.ProtoReflect.Descriptor instead.
 func (*SearchConversationsRequest) Descriptor() ([]byte, []int) {
 	return file_chat_service_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *SearchConversationsRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
 }
 
 func (x *SearchConversationsRequest) GetType() ConversationType {
@@ -763,13 +771,14 @@ const file_chat_service_proto_rawDesc = "" +
 	"\n" +
 	"member_ids\x18\x04 \x03(\tR\tmemberIds\x129\n" +
 	"\n" +
-	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xb8\x01\n" +
-	"\x1aSearchConversationsRequest\x12?\n" +
-	"\x04type\x18\x01 \x01(\x0e2&.backend.chat_service.ConversationTypeH\x00R\x04type\x88\x01\x01\x12\x12\n" +
-	"\x04term\x18\x02 \x01(\tR\x04term\x12\x1f\n" +
-	"\vpage_number\x18\x03 \x01(\x05R\n" +
+	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xd1\x01\n" +
+	"\x1aSearchConversationsRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12?\n" +
+	"\x04type\x18\x02 \x01(\x0e2&.backend.chat_service.ConversationTypeH\x00R\x04type\x88\x01\x01\x12\x12\n" +
+	"\x04term\x18\x03 \x01(\tR\x04term\x12\x1f\n" +
+	"\vpage_number\x18\x04 \x01(\x05R\n" +
 	"pageNumber\x12\x1b\n" +
-	"\tpage_size\x18\x04 \x01(\x05R\bpageSizeB\a\n" +
+	"\tpage_size\x18\x05 \x01(\x05R\bpageSizeB\a\n" +
 	"\x05_type\"Y\n" +
 	"\rConversations\x12H\n" +
 	"\rconversations\x18\x01 \x03(\v2\".backend.chat_service.ConversationR\rconversations**\n" +
