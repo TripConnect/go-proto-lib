@@ -36,7 +36,7 @@ Build golang proto files
 cd go-proto-lib
 protoc --go_out=./protos --go_opt=paths=source_relative --go-grpc_out=./protos --go-grpc_opt=paths=source_relative --proto_path=proto-storage/protos ./proto-storage/protos/*.proto
 ```
-Publish to github registry
+Publish to Github registry
 ```sh
 git add .
 git commit -m "build: something"
