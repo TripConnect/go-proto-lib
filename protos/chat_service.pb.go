@@ -144,6 +144,50 @@ func (x *ChatMessage) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+type CreateChatMessageAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CorrelationId string                 `protobuf:"bytes,1,opt,name=correlation_id,json=correlationId,proto3" json:"correlation_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateChatMessageAck) Reset() {
+	*x = CreateChatMessageAck{}
+	mi := &file_chat_service_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateChatMessageAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateChatMessageAck) ProtoMessage() {}
+
+func (x *CreateChatMessageAck) ProtoReflect() protoreflect.Message {
+	mi := &file_chat_service_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateChatMessageAck.ProtoReflect.Descriptor instead.
+func (*CreateChatMessageAck) Descriptor() ([]byte, []int) {
+	return file_chat_service_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CreateChatMessageAck) GetCorrelationId() string {
+	if x != nil {
+		return x.CorrelationId
+	}
+	return ""
+}
+
 type FindConversationRequest struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	ConversationId    string                 `protobuf:"bytes,1,opt,name=conversation_id,json=conversationId,proto3" json:"conversation_id,omitempty"`
@@ -155,7 +199,7 @@ type FindConversationRequest struct {
 
 func (x *FindConversationRequest) Reset() {
 	*x = FindConversationRequest{}
-	mi := &file_chat_service_proto_msgTypes[1]
+	mi := &file_chat_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -167,7 +211,7 @@ func (x *FindConversationRequest) String() string {
 func (*FindConversationRequest) ProtoMessage() {}
 
 func (x *FindConversationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_service_proto_msgTypes[1]
+	mi := &file_chat_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -180,7 +224,7 @@ func (x *FindConversationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FindConversationRequest.ProtoReflect.Descriptor instead.
 func (*FindConversationRequest) Descriptor() ([]byte, []int) {
-	return file_chat_service_proto_rawDescGZIP(), []int{1}
+	return file_chat_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *FindConversationRequest) GetConversationId() string {
@@ -216,7 +260,7 @@ type CreateConversationRequest struct {
 
 func (x *CreateConversationRequest) Reset() {
 	*x = CreateConversationRequest{}
-	mi := &file_chat_service_proto_msgTypes[2]
+	mi := &file_chat_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -228,7 +272,7 @@ func (x *CreateConversationRequest) String() string {
 func (*CreateConversationRequest) ProtoMessage() {}
 
 func (x *CreateConversationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_service_proto_msgTypes[2]
+	mi := &file_chat_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -241,7 +285,7 @@ func (x *CreateConversationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateConversationRequest.ProtoReflect.Descriptor instead.
 func (*CreateConversationRequest) Descriptor() ([]byte, []int) {
-	return file_chat_service_proto_rawDescGZIP(), []int{2}
+	return file_chat_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *CreateConversationRequest) GetOwnerId() string {
@@ -283,7 +327,7 @@ type CreateChatMessageRequest struct {
 
 func (x *CreateChatMessageRequest) Reset() {
 	*x = CreateChatMessageRequest{}
-	mi := &file_chat_service_proto_msgTypes[3]
+	mi := &file_chat_service_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -295,7 +339,7 @@ func (x *CreateChatMessageRequest) String() string {
 func (*CreateChatMessageRequest) ProtoMessage() {}
 
 func (x *CreateChatMessageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_service_proto_msgTypes[3]
+	mi := &file_chat_service_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -308,7 +352,7 @@ func (x *CreateChatMessageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateChatMessageRequest.ProtoReflect.Descriptor instead.
 func (*CreateChatMessageRequest) Descriptor() ([]byte, []int) {
-	return file_chat_service_proto_rawDescGZIP(), []int{3}
+	return file_chat_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CreateChatMessageRequest) GetConversationId() string {
@@ -344,7 +388,7 @@ type GetChatMessagesRequest struct {
 
 func (x *GetChatMessagesRequest) Reset() {
 	*x = GetChatMessagesRequest{}
-	mi := &file_chat_service_proto_msgTypes[4]
+	mi := &file_chat_service_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -356,7 +400,7 @@ func (x *GetChatMessagesRequest) String() string {
 func (*GetChatMessagesRequest) ProtoMessage() {}
 
 func (x *GetChatMessagesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_service_proto_msgTypes[4]
+	mi := &file_chat_service_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -369,7 +413,7 @@ func (x *GetChatMessagesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetChatMessagesRequest.ProtoReflect.Descriptor instead.
 func (*GetChatMessagesRequest) Descriptor() ([]byte, []int) {
-	return file_chat_service_proto_rawDescGZIP(), []int{4}
+	return file_chat_service_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetChatMessagesRequest) GetConversationId() string {
@@ -413,7 +457,7 @@ type SearchChatMessagesRequest struct {
 
 func (x *SearchChatMessagesRequest) Reset() {
 	*x = SearchChatMessagesRequest{}
-	mi := &file_chat_service_proto_msgTypes[5]
+	mi := &file_chat_service_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -425,7 +469,7 @@ func (x *SearchChatMessagesRequest) String() string {
 func (*SearchChatMessagesRequest) ProtoMessage() {}
 
 func (x *SearchChatMessagesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_service_proto_msgTypes[5]
+	mi := &file_chat_service_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -438,7 +482,7 @@ func (x *SearchChatMessagesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SearchChatMessagesRequest.ProtoReflect.Descriptor instead.
 func (*SearchChatMessagesRequest) Descriptor() ([]byte, []int) {
-	return file_chat_service_proto_rawDescGZIP(), []int{5}
+	return file_chat_service_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *SearchChatMessagesRequest) GetConversationId() string {
@@ -485,7 +529,7 @@ type ChatMessages struct {
 
 func (x *ChatMessages) Reset() {
 	*x = ChatMessages{}
-	mi := &file_chat_service_proto_msgTypes[6]
+	mi := &file_chat_service_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -497,7 +541,7 @@ func (x *ChatMessages) String() string {
 func (*ChatMessages) ProtoMessage() {}
 
 func (x *ChatMessages) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_service_proto_msgTypes[6]
+	mi := &file_chat_service_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -510,7 +554,7 @@ func (x *ChatMessages) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChatMessages.ProtoReflect.Descriptor instead.
 func (*ChatMessages) Descriptor() ([]byte, []int) {
-	return file_chat_service_proto_rawDescGZIP(), []int{6}
+	return file_chat_service_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ChatMessages) GetMessages() []*ChatMessage {
@@ -533,7 +577,7 @@ type Conversation struct {
 
 func (x *Conversation) Reset() {
 	*x = Conversation{}
-	mi := &file_chat_service_proto_msgTypes[7]
+	mi := &file_chat_service_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -545,7 +589,7 @@ func (x *Conversation) String() string {
 func (*Conversation) ProtoMessage() {}
 
 func (x *Conversation) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_service_proto_msgTypes[7]
+	mi := &file_chat_service_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -558,7 +602,7 @@ func (x *Conversation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Conversation.ProtoReflect.Descriptor instead.
 func (*Conversation) Descriptor() ([]byte, []int) {
-	return file_chat_service_proto_rawDescGZIP(), []int{7}
+	return file_chat_service_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Conversation) GetId() string {
@@ -609,7 +653,7 @@ type SearchConversationsRequest struct {
 
 func (x *SearchConversationsRequest) Reset() {
 	*x = SearchConversationsRequest{}
-	mi := &file_chat_service_proto_msgTypes[8]
+	mi := &file_chat_service_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -621,7 +665,7 @@ func (x *SearchConversationsRequest) String() string {
 func (*SearchConversationsRequest) ProtoMessage() {}
 
 func (x *SearchConversationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_service_proto_msgTypes[8]
+	mi := &file_chat_service_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -634,7 +678,7 @@ func (x *SearchConversationsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SearchConversationsRequest.ProtoReflect.Descriptor instead.
 func (*SearchConversationsRequest) Descriptor() ([]byte, []int) {
-	return file_chat_service_proto_rawDescGZIP(), []int{8}
+	return file_chat_service_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *SearchConversationsRequest) GetUserId() string {
@@ -681,7 +725,7 @@ type Conversations struct {
 
 func (x *Conversations) Reset() {
 	*x = Conversations{}
-	mi := &file_chat_service_proto_msgTypes[9]
+	mi := &file_chat_service_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -693,7 +737,7 @@ func (x *Conversations) String() string {
 func (*Conversations) ProtoMessage() {}
 
 func (x *Conversations) ProtoReflect() protoreflect.Message {
-	mi := &file_chat_service_proto_msgTypes[9]
+	mi := &file_chat_service_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -706,7 +750,7 @@ func (x *Conversations) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Conversations.ProtoReflect.Descriptor instead.
 func (*Conversations) Descriptor() ([]byte, []int) {
-	return file_chat_service_proto_rawDescGZIP(), []int{9}
+	return file_chat_service_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *Conversations) GetConversations() []*Conversation {
@@ -728,7 +772,9 @@ const file_chat_service_proto_rawDesc = "" +
 	"fromUserId\x12\x18\n" +
 	"\acontent\x18\x04 \x01(\tR\acontent\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\x9e\x01\n" +
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"=\n" +
+	"\x14CreateChatMessageAck\x12%\n" +
+	"\x0ecorrelation_id\x18\x01 \x01(\tR\rcorrelationId\"\x9e\x01\n" +
 	"\x17FindConversationRequest\x12'\n" +
 	"\x0fconversation_id\x18\x01 \x01(\tR\x0econversationId\x12.\n" +
 	"\x13message_page_number\x18\x02 \x01(\x05R\x11messagePageNumber\x12*\n" +
@@ -784,12 +830,12 @@ const file_chat_service_proto_rawDesc = "" +
 	"\rconversations\x18\x01 \x03(\v2\".backend.chat_service.ConversationR\rconversations**\n" +
 	"\x10ConversationType\x12\v\n" +
 	"\aPRIVATE\x10\x00\x12\t\n" +
-	"\x05GROUP\x10\x012\x91\x05\n" +
+	"\x05GROUP\x10\x012\x9a\x05\n" +
 	"\vChatService\x12k\n" +
 	"\x12CreateConversation\x12/.backend.chat_service.CreateConversationRequest\x1a\".backend.chat_service.Conversation\"\x00\x12g\n" +
 	"\x10FindConversation\x12-.backend.chat_service.FindConversationRequest\x1a\".backend.chat_service.Conversation\"\x00\x12n\n" +
-	"\x13SearchConversations\x120.backend.chat_service.SearchConversationsRequest\x1a#.backend.chat_service.Conversations\"\x00\x12h\n" +
-	"\x11CreateChatMessage\x12..backend.chat_service.CreateChatMessageRequest\x1a!.backend.chat_service.ChatMessage\"\x00\x12e\n" +
+	"\x13SearchConversations\x120.backend.chat_service.SearchConversationsRequest\x1a#.backend.chat_service.Conversations\"\x00\x12q\n" +
+	"\x11CreateChatMessage\x12..backend.chat_service.CreateChatMessageRequest\x1a*.backend.chat_service.CreateChatMessageAck\"\x00\x12e\n" +
 	"\x0fGetChatMessages\x12,.backend.chat_service.GetChatMessagesRequest\x1a\".backend.chat_service.ChatMessages\"\x00\x12k\n" +
 	"\x12SearchChatMessages\x12/.backend.chat_service.SearchChatMessagesRequest\x1a\".backend.chat_service.ChatMessages\"\x00B,Z*github.com/TripConnect/chat_service;protosb\x06proto3"
 
@@ -806,45 +852,46 @@ func file_chat_service_proto_rawDescGZIP() []byte {
 }
 
 var file_chat_service_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_chat_service_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_chat_service_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_chat_service_proto_goTypes = []any{
 	(ConversationType)(0),              // 0: backend.chat_service.ConversationType
 	(*ChatMessage)(nil),                // 1: backend.chat_service.ChatMessage
-	(*FindConversationRequest)(nil),    // 2: backend.chat_service.FindConversationRequest
-	(*CreateConversationRequest)(nil),  // 3: backend.chat_service.CreateConversationRequest
-	(*CreateChatMessageRequest)(nil),   // 4: backend.chat_service.CreateChatMessageRequest
-	(*GetChatMessagesRequest)(nil),     // 5: backend.chat_service.GetChatMessagesRequest
-	(*SearchChatMessagesRequest)(nil),  // 6: backend.chat_service.SearchChatMessagesRequest
-	(*ChatMessages)(nil),               // 7: backend.chat_service.ChatMessages
-	(*Conversation)(nil),               // 8: backend.chat_service.Conversation
-	(*SearchConversationsRequest)(nil), // 9: backend.chat_service.SearchConversationsRequest
-	(*Conversations)(nil),              // 10: backend.chat_service.Conversations
-	(*timestamppb.Timestamp)(nil),      // 11: google.protobuf.Timestamp
+	(*CreateChatMessageAck)(nil),       // 2: backend.chat_service.CreateChatMessageAck
+	(*FindConversationRequest)(nil),    // 3: backend.chat_service.FindConversationRequest
+	(*CreateConversationRequest)(nil),  // 4: backend.chat_service.CreateConversationRequest
+	(*CreateChatMessageRequest)(nil),   // 5: backend.chat_service.CreateChatMessageRequest
+	(*GetChatMessagesRequest)(nil),     // 6: backend.chat_service.GetChatMessagesRequest
+	(*SearchChatMessagesRequest)(nil),  // 7: backend.chat_service.SearchChatMessagesRequest
+	(*ChatMessages)(nil),               // 8: backend.chat_service.ChatMessages
+	(*Conversation)(nil),               // 9: backend.chat_service.Conversation
+	(*SearchConversationsRequest)(nil), // 10: backend.chat_service.SearchConversationsRequest
+	(*Conversations)(nil),              // 11: backend.chat_service.Conversations
+	(*timestamppb.Timestamp)(nil),      // 12: google.protobuf.Timestamp
 }
 var file_chat_service_proto_depIdxs = []int32{
-	11, // 0: backend.chat_service.ChatMessage.created_at:type_name -> google.protobuf.Timestamp
+	12, // 0: backend.chat_service.ChatMessage.created_at:type_name -> google.protobuf.Timestamp
 	0,  // 1: backend.chat_service.CreateConversationRequest.type:type_name -> backend.chat_service.ConversationType
-	11, // 2: backend.chat_service.GetChatMessagesRequest.before:type_name -> google.protobuf.Timestamp
-	11, // 3: backend.chat_service.GetChatMessagesRequest.after:type_name -> google.protobuf.Timestamp
-	11, // 4: backend.chat_service.SearchChatMessagesRequest.before:type_name -> google.protobuf.Timestamp
-	11, // 5: backend.chat_service.SearchChatMessagesRequest.after:type_name -> google.protobuf.Timestamp
+	12, // 2: backend.chat_service.GetChatMessagesRequest.before:type_name -> google.protobuf.Timestamp
+	12, // 3: backend.chat_service.GetChatMessagesRequest.after:type_name -> google.protobuf.Timestamp
+	12, // 4: backend.chat_service.SearchChatMessagesRequest.before:type_name -> google.protobuf.Timestamp
+	12, // 5: backend.chat_service.SearchChatMessagesRequest.after:type_name -> google.protobuf.Timestamp
 	1,  // 6: backend.chat_service.ChatMessages.messages:type_name -> backend.chat_service.ChatMessage
 	0,  // 7: backend.chat_service.Conversation.type:type_name -> backend.chat_service.ConversationType
-	11, // 8: backend.chat_service.Conversation.created_at:type_name -> google.protobuf.Timestamp
+	12, // 8: backend.chat_service.Conversation.created_at:type_name -> google.protobuf.Timestamp
 	0,  // 9: backend.chat_service.SearchConversationsRequest.type:type_name -> backend.chat_service.ConversationType
-	8,  // 10: backend.chat_service.Conversations.conversations:type_name -> backend.chat_service.Conversation
-	3,  // 11: backend.chat_service.ChatService.CreateConversation:input_type -> backend.chat_service.CreateConversationRequest
-	2,  // 12: backend.chat_service.ChatService.FindConversation:input_type -> backend.chat_service.FindConversationRequest
-	9,  // 13: backend.chat_service.ChatService.SearchConversations:input_type -> backend.chat_service.SearchConversationsRequest
-	4,  // 14: backend.chat_service.ChatService.CreateChatMessage:input_type -> backend.chat_service.CreateChatMessageRequest
-	5,  // 15: backend.chat_service.ChatService.GetChatMessages:input_type -> backend.chat_service.GetChatMessagesRequest
-	6,  // 16: backend.chat_service.ChatService.SearchChatMessages:input_type -> backend.chat_service.SearchChatMessagesRequest
-	8,  // 17: backend.chat_service.ChatService.CreateConversation:output_type -> backend.chat_service.Conversation
-	8,  // 18: backend.chat_service.ChatService.FindConversation:output_type -> backend.chat_service.Conversation
-	10, // 19: backend.chat_service.ChatService.SearchConversations:output_type -> backend.chat_service.Conversations
-	1,  // 20: backend.chat_service.ChatService.CreateChatMessage:output_type -> backend.chat_service.ChatMessage
-	7,  // 21: backend.chat_service.ChatService.GetChatMessages:output_type -> backend.chat_service.ChatMessages
-	7,  // 22: backend.chat_service.ChatService.SearchChatMessages:output_type -> backend.chat_service.ChatMessages
+	9,  // 10: backend.chat_service.Conversations.conversations:type_name -> backend.chat_service.Conversation
+	4,  // 11: backend.chat_service.ChatService.CreateConversation:input_type -> backend.chat_service.CreateConversationRequest
+	3,  // 12: backend.chat_service.ChatService.FindConversation:input_type -> backend.chat_service.FindConversationRequest
+	10, // 13: backend.chat_service.ChatService.SearchConversations:input_type -> backend.chat_service.SearchConversationsRequest
+	5,  // 14: backend.chat_service.ChatService.CreateChatMessage:input_type -> backend.chat_service.CreateChatMessageRequest
+	6,  // 15: backend.chat_service.ChatService.GetChatMessages:input_type -> backend.chat_service.GetChatMessagesRequest
+	7,  // 16: backend.chat_service.ChatService.SearchChatMessages:input_type -> backend.chat_service.SearchChatMessagesRequest
+	9,  // 17: backend.chat_service.ChatService.CreateConversation:output_type -> backend.chat_service.Conversation
+	9,  // 18: backend.chat_service.ChatService.FindConversation:output_type -> backend.chat_service.Conversation
+	11, // 19: backend.chat_service.ChatService.SearchConversations:output_type -> backend.chat_service.Conversations
+	2,  // 20: backend.chat_service.ChatService.CreateChatMessage:output_type -> backend.chat_service.CreateChatMessageAck
+	8,  // 21: backend.chat_service.ChatService.GetChatMessages:output_type -> backend.chat_service.ChatMessages
+	8,  // 22: backend.chat_service.ChatService.SearchChatMessages:output_type -> backend.chat_service.ChatMessages
 	17, // [17:23] is the sub-list for method output_type
 	11, // [11:17] is the sub-list for method input_type
 	11, // [11:11] is the sub-list for extension type_name
@@ -857,17 +904,17 @@ func file_chat_service_proto_init() {
 	if File_chat_service_proto != nil {
 		return
 	}
-	file_chat_service_proto_msgTypes[2].OneofWrappers = []any{}
-	file_chat_service_proto_msgTypes[4].OneofWrappers = []any{}
+	file_chat_service_proto_msgTypes[3].OneofWrappers = []any{}
 	file_chat_service_proto_msgTypes[5].OneofWrappers = []any{}
-	file_chat_service_proto_msgTypes[8].OneofWrappers = []any{}
+	file_chat_service_proto_msgTypes[6].OneofWrappers = []any{}
+	file_chat_service_proto_msgTypes[9].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_chat_service_proto_rawDesc), len(file_chat_service_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   10,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

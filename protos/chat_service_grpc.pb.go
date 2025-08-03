@@ -34,7 +34,7 @@ type ChatServiceClient interface {
 	CreateConversation(ctx context.Context, in *CreateConversationRequest, opts ...grpc.CallOption) (*Conversation, error)
 	FindConversation(ctx context.Context, in *FindConversationRequest, opts ...grpc.CallOption) (*Conversation, error)
 	SearchConversations(ctx context.Context, in *SearchConversationsRequest, opts ...grpc.CallOption) (*Conversations, error)
-	CreateChatMessage(ctx context.Context, in *CreateChatMessageRequest, opts ...grpc.CallOption) (*ChatMessage, error)
+	CreateChatMessage(ctx context.Context, in *CreateChatMessageRequest, opts ...grpc.CallOption) (*CreateChatMessageAck, error)
 	GetChatMessages(ctx context.Context, in *GetChatMessagesRequest, opts ...grpc.CallOption) (*ChatMessages, error)
 	SearchChatMessages(ctx context.Context, in *SearchChatMessagesRequest, opts ...grpc.CallOption) (*ChatMessages, error)
 }
@@ -77,9 +77,9 @@ func (c *chatServiceClient) SearchConversations(ctx context.Context, in *SearchC
 	return out, nil
 }
 
-func (c *chatServiceClient) CreateChatMessage(ctx context.Context, in *CreateChatMessageRequest, opts ...grpc.CallOption) (*ChatMessage, error) {
+func (c *chatServiceClient) CreateChatMessage(ctx context.Context, in *CreateChatMessageRequest, opts ...grpc.CallOption) (*CreateChatMessageAck, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ChatMessage)
+	out := new(CreateChatMessageAck)
 	err := c.cc.Invoke(ctx, ChatService_CreateChatMessage_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -114,7 +114,7 @@ type ChatServiceServer interface {
 	CreateConversation(context.Context, *CreateConversationRequest) (*Conversation, error)
 	FindConversation(context.Context, *FindConversationRequest) (*Conversation, error)
 	SearchConversations(context.Context, *SearchConversationsRequest) (*Conversations, error)
-	CreateChatMessage(context.Context, *CreateChatMessageRequest) (*ChatMessage, error)
+	CreateChatMessage(context.Context, *CreateChatMessageRequest) (*CreateChatMessageAck, error)
 	GetChatMessages(context.Context, *GetChatMessagesRequest) (*ChatMessages, error)
 	SearchChatMessages(context.Context, *SearchChatMessagesRequest) (*ChatMessages, error)
 	mustEmbedUnimplementedChatServiceServer()
@@ -136,7 +136,7 @@ func (UnimplementedChatServiceServer) FindConversation(context.Context, *FindCon
 func (UnimplementedChatServiceServer) SearchConversations(context.Context, *SearchConversationsRequest) (*Conversations, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchConversations not implemented")
 }
-func (UnimplementedChatServiceServer) CreateChatMessage(context.Context, *CreateChatMessageRequest) (*ChatMessage, error) {
+func (UnimplementedChatServiceServer) CreateChatMessage(context.Context, *CreateChatMessageRequest) (*CreateChatMessageAck, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateChatMessage not implemented")
 }
 func (UnimplementedChatServiceServer) GetChatMessages(context.Context, *GetChatMessagesRequest) (*ChatMessages, error) {
