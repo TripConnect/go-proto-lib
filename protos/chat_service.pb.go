@@ -74,7 +74,8 @@ type ChatMessage struct {
 	ConversationId string                 `protobuf:"bytes,2,opt,name=conversation_id,json=conversationId,proto3" json:"conversation_id,omitempty"`
 	FromUserId     string                 `protobuf:"bytes,3,opt,name=from_user_id,json=fromUserId,proto3" json:"from_user_id,omitempty"`
 	Content        string                 `protobuf:"bytes,4,opt,name=content,proto3" json:"content,omitempty"`
-	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	SentTime       *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=sent_time,json=sentTime,proto3" json:"sent_time,omitempty"`
+	CreateTime     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -137,9 +138,16 @@ func (x *ChatMessage) GetContent() string {
 	return ""
 }
 
-func (x *ChatMessage) GetCreatedAt() *timestamppb.Timestamp {
+func (x *ChatMessage) GetSentTime() *timestamppb.Timestamp {
 	if x != nil {
-		return x.CreatedAt
+		return x.SentTime
+	}
+	return nil
+}
+
+func (x *ChatMessage) GetCreateTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreateTime
 	}
 	return nil
 }
@@ -764,15 +772,16 @@ var File_chat_service_proto protoreflect.FileDescriptor
 
 const file_chat_service_proto_rawDesc = "" +
 	"\n" +
-	"\x12chat_service.proto\x12\x14backend.chat_service\x1a\x1fgoogle/protobuf/timestamp.proto\"\xbd\x01\n" +
+	"\x12chat_service.proto\x12\x14backend.chat_service\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf8\x01\n" +
 	"\vChatMessage\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12'\n" +
 	"\x0fconversation_id\x18\x02 \x01(\tR\x0econversationId\x12 \n" +
 	"\ffrom_user_id\x18\x03 \x01(\tR\n" +
 	"fromUserId\x12\x18\n" +
-	"\acontent\x18\x04 \x01(\tR\acontent\x129\n" +
-	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"=\n" +
+	"\acontent\x18\x04 \x01(\tR\acontent\x127\n" +
+	"\tsent_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\bsentTime\x12;\n" +
+	"\vcreate_time\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
+	"createTime\"=\n" +
 	"\x14CreateChatMessageAck\x12%\n" +
 	"\x0ecorrelation_id\x18\x01 \x01(\tR\rcorrelationId\"\x9e\x01\n" +
 	"\x17FindConversationRequest\x12'\n" +
@@ -869,34 +878,35 @@ var file_chat_service_proto_goTypes = []any{
 	(*timestamppb.Timestamp)(nil),      // 12: google.protobuf.Timestamp
 }
 var file_chat_service_proto_depIdxs = []int32{
-	12, // 0: backend.chat_service.ChatMessage.created_at:type_name -> google.protobuf.Timestamp
-	0,  // 1: backend.chat_service.CreateConversationRequest.type:type_name -> backend.chat_service.ConversationType
-	12, // 2: backend.chat_service.GetChatMessagesRequest.before:type_name -> google.protobuf.Timestamp
-	12, // 3: backend.chat_service.GetChatMessagesRequest.after:type_name -> google.protobuf.Timestamp
-	12, // 4: backend.chat_service.SearchChatMessagesRequest.before:type_name -> google.protobuf.Timestamp
-	12, // 5: backend.chat_service.SearchChatMessagesRequest.after:type_name -> google.protobuf.Timestamp
-	1,  // 6: backend.chat_service.ChatMessages.messages:type_name -> backend.chat_service.ChatMessage
-	0,  // 7: backend.chat_service.Conversation.type:type_name -> backend.chat_service.ConversationType
-	12, // 8: backend.chat_service.Conversation.created_at:type_name -> google.protobuf.Timestamp
-	0,  // 9: backend.chat_service.SearchConversationsRequest.type:type_name -> backend.chat_service.ConversationType
-	9,  // 10: backend.chat_service.Conversations.conversations:type_name -> backend.chat_service.Conversation
-	4,  // 11: backend.chat_service.ChatService.CreateConversation:input_type -> backend.chat_service.CreateConversationRequest
-	3,  // 12: backend.chat_service.ChatService.FindConversation:input_type -> backend.chat_service.FindConversationRequest
-	10, // 13: backend.chat_service.ChatService.SearchConversations:input_type -> backend.chat_service.SearchConversationsRequest
-	5,  // 14: backend.chat_service.ChatService.CreateChatMessage:input_type -> backend.chat_service.CreateChatMessageRequest
-	6,  // 15: backend.chat_service.ChatService.GetChatMessages:input_type -> backend.chat_service.GetChatMessagesRequest
-	7,  // 16: backend.chat_service.ChatService.SearchChatMessages:input_type -> backend.chat_service.SearchChatMessagesRequest
-	9,  // 17: backend.chat_service.ChatService.CreateConversation:output_type -> backend.chat_service.Conversation
-	9,  // 18: backend.chat_service.ChatService.FindConversation:output_type -> backend.chat_service.Conversation
-	11, // 19: backend.chat_service.ChatService.SearchConversations:output_type -> backend.chat_service.Conversations
-	2,  // 20: backend.chat_service.ChatService.CreateChatMessage:output_type -> backend.chat_service.CreateChatMessageAck
-	8,  // 21: backend.chat_service.ChatService.GetChatMessages:output_type -> backend.chat_service.ChatMessages
-	8,  // 22: backend.chat_service.ChatService.SearchChatMessages:output_type -> backend.chat_service.ChatMessages
-	17, // [17:23] is the sub-list for method output_type
-	11, // [11:17] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	12, // 0: backend.chat_service.ChatMessage.sent_time:type_name -> google.protobuf.Timestamp
+	12, // 1: backend.chat_service.ChatMessage.create_time:type_name -> google.protobuf.Timestamp
+	0,  // 2: backend.chat_service.CreateConversationRequest.type:type_name -> backend.chat_service.ConversationType
+	12, // 3: backend.chat_service.GetChatMessagesRequest.before:type_name -> google.protobuf.Timestamp
+	12, // 4: backend.chat_service.GetChatMessagesRequest.after:type_name -> google.protobuf.Timestamp
+	12, // 5: backend.chat_service.SearchChatMessagesRequest.before:type_name -> google.protobuf.Timestamp
+	12, // 6: backend.chat_service.SearchChatMessagesRequest.after:type_name -> google.protobuf.Timestamp
+	1,  // 7: backend.chat_service.ChatMessages.messages:type_name -> backend.chat_service.ChatMessage
+	0,  // 8: backend.chat_service.Conversation.type:type_name -> backend.chat_service.ConversationType
+	12, // 9: backend.chat_service.Conversation.created_at:type_name -> google.protobuf.Timestamp
+	0,  // 10: backend.chat_service.SearchConversationsRequest.type:type_name -> backend.chat_service.ConversationType
+	9,  // 11: backend.chat_service.Conversations.conversations:type_name -> backend.chat_service.Conversation
+	4,  // 12: backend.chat_service.ChatService.CreateConversation:input_type -> backend.chat_service.CreateConversationRequest
+	3,  // 13: backend.chat_service.ChatService.FindConversation:input_type -> backend.chat_service.FindConversationRequest
+	10, // 14: backend.chat_service.ChatService.SearchConversations:input_type -> backend.chat_service.SearchConversationsRequest
+	5,  // 15: backend.chat_service.ChatService.CreateChatMessage:input_type -> backend.chat_service.CreateChatMessageRequest
+	6,  // 16: backend.chat_service.ChatService.GetChatMessages:input_type -> backend.chat_service.GetChatMessagesRequest
+	7,  // 17: backend.chat_service.ChatService.SearchChatMessages:input_type -> backend.chat_service.SearchChatMessagesRequest
+	9,  // 18: backend.chat_service.ChatService.CreateConversation:output_type -> backend.chat_service.Conversation
+	9,  // 19: backend.chat_service.ChatService.FindConversation:output_type -> backend.chat_service.Conversation
+	11, // 20: backend.chat_service.ChatService.SearchConversations:output_type -> backend.chat_service.Conversations
+	2,  // 21: backend.chat_service.ChatService.CreateChatMessage:output_type -> backend.chat_service.CreateChatMessageAck
+	8,  // 22: backend.chat_service.ChatService.GetChatMessages:output_type -> backend.chat_service.ChatMessages
+	8,  // 23: backend.chat_service.ChatService.SearchChatMessages:output_type -> backend.chat_service.ChatMessages
+	18, // [18:24] is the sub-list for method output_type
+	12, // [12:18] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_chat_service_proto_init() }
