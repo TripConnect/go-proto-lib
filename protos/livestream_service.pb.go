@@ -206,6 +206,8 @@ type SearchLivestreamsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Term          string                 `protobuf:"bytes,1,opt,name=term,proto3" json:"term,omitempty"`
 	Status        string                 `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
+	PageNumber    int32                  `protobuf:"varint,3,opt,name=page_number,json=pageNumber,proto3" json:"page_number,omitempty"`
+	PageSize      int32                  `protobuf:"varint,4,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -252,6 +254,20 @@ func (x *SearchLivestreamsRequest) GetStatus() string {
 		return x.Status
 	}
 	return ""
+}
+
+func (x *SearchLivestreamsRequest) GetPageNumber() int32 {
+	if x != nil {
+		return x.PageNumber
+	}
+	return 0
+}
+
+func (x *SearchLivestreamsRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
 }
 
 type FindLivestreamRequest struct {
@@ -360,10 +376,13 @@ const file_livestream_service_proto_rawDesc = "" +
 	"\vlivestreams\x18\x01 \x01(\v2&.backend.livestream_service.LivestreamR\vlivestreams\"M\n" +
 	"\x17CreateLivestreamRequest\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x1c\n" +
-	"\tthumbnail\x18\x02 \x01(\tR\tthumbnail\"F\n" +
+	"\tthumbnail\x18\x02 \x01(\tR\tthumbnail\"\x84\x01\n" +
 	"\x18SearchLivestreamsRequest\x12\x12\n" +
 	"\x04term\x18\x01 \x01(\tR\x04term\x12\x16\n" +
-	"\x06status\x18\x02 \x01(\tR\x06status\"<\n" +
+	"\x06status\x18\x02 \x01(\tR\x06status\x12\x1f\n" +
+	"\vpage_number\x18\x03 \x01(\x05R\n" +
+	"pageNumber\x12\x1b\n" +
+	"\tpage_size\x18\x04 \x01(\x05R\bpageSize\"<\n" +
 	"\x15FindLivestreamRequest\x12#\n" +
 	"\rlivestream_id\x18\x01 \x01(\tR\flivestreamId\";\n" +
 	"\x14EndLivestreamRequest\x12#\n" +
