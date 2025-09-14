@@ -19,215 +19,215 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	LivetreamService_CreateLivestream_FullMethodName = "/backend.livestream_service.LivetreamService/CreateLivestream"
-	LivetreamService_EndLivestream_FullMethodName    = "/backend.livestream_service.LivetreamService/EndLivestream"
-	LivetreamService_FindLivestream_FullMethodName   = "/backend.livestream_service.LivetreamService/FindLivestream"
-	LivetreamService_SearchLivestream_FullMethodName = "/backend.livestream_service.LivetreamService/SearchLivestream"
+	LivestreamService_CreateLivestream_FullMethodName = "/backend.livestream_service.LivestreamService/CreateLivestream"
+	LivestreamService_EndLivestream_FullMethodName    = "/backend.livestream_service.LivestreamService/EndLivestream"
+	LivestreamService_FindLivestream_FullMethodName   = "/backend.livestream_service.LivestreamService/FindLivestream"
+	LivestreamService_SearchLivestream_FullMethodName = "/backend.livestream_service.LivestreamService/SearchLivestream"
 )
 
-// LivetreamServiceClient is the client API for LivetreamService service.
+// LivestreamServiceClient is the client API for LivestreamService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type LivetreamServiceClient interface {
+type LivestreamServiceClient interface {
 	CreateLivestream(ctx context.Context, in *CreateLivestreamRequest, opts ...grpc.CallOption) (*Livestream, error)
 	EndLivestream(ctx context.Context, in *EndLivestreamRequest, opts ...grpc.CallOption) (*Livestream, error)
 	FindLivestream(ctx context.Context, in *FindLivestreamRequest, opts ...grpc.CallOption) (*Livestream, error)
 	SearchLivestream(ctx context.Context, in *SearchLivestreamsRequest, opts ...grpc.CallOption) (*Livestreams, error)
 }
 
-type livetreamServiceClient struct {
+type livestreamServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewLivetreamServiceClient(cc grpc.ClientConnInterface) LivetreamServiceClient {
-	return &livetreamServiceClient{cc}
+func NewLivestreamServiceClient(cc grpc.ClientConnInterface) LivestreamServiceClient {
+	return &livestreamServiceClient{cc}
 }
 
-func (c *livetreamServiceClient) CreateLivestream(ctx context.Context, in *CreateLivestreamRequest, opts ...grpc.CallOption) (*Livestream, error) {
+func (c *livestreamServiceClient) CreateLivestream(ctx context.Context, in *CreateLivestreamRequest, opts ...grpc.CallOption) (*Livestream, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Livestream)
-	err := c.cc.Invoke(ctx, LivetreamService_CreateLivestream_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, LivestreamService_CreateLivestream_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *livetreamServiceClient) EndLivestream(ctx context.Context, in *EndLivestreamRequest, opts ...grpc.CallOption) (*Livestream, error) {
+func (c *livestreamServiceClient) EndLivestream(ctx context.Context, in *EndLivestreamRequest, opts ...grpc.CallOption) (*Livestream, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Livestream)
-	err := c.cc.Invoke(ctx, LivetreamService_EndLivestream_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, LivestreamService_EndLivestream_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *livetreamServiceClient) FindLivestream(ctx context.Context, in *FindLivestreamRequest, opts ...grpc.CallOption) (*Livestream, error) {
+func (c *livestreamServiceClient) FindLivestream(ctx context.Context, in *FindLivestreamRequest, opts ...grpc.CallOption) (*Livestream, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Livestream)
-	err := c.cc.Invoke(ctx, LivetreamService_FindLivestream_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, LivestreamService_FindLivestream_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *livetreamServiceClient) SearchLivestream(ctx context.Context, in *SearchLivestreamsRequest, opts ...grpc.CallOption) (*Livestreams, error) {
+func (c *livestreamServiceClient) SearchLivestream(ctx context.Context, in *SearchLivestreamsRequest, opts ...grpc.CallOption) (*Livestreams, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Livestreams)
-	err := c.cc.Invoke(ctx, LivetreamService_SearchLivestream_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, LivestreamService_SearchLivestream_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// LivetreamServiceServer is the server API for LivetreamService service.
-// All implementations must embed UnimplementedLivetreamServiceServer
+// LivestreamServiceServer is the server API for LivestreamService service.
+// All implementations must embed UnimplementedLivestreamServiceServer
 // for forward compatibility.
-type LivetreamServiceServer interface {
+type LivestreamServiceServer interface {
 	CreateLivestream(context.Context, *CreateLivestreamRequest) (*Livestream, error)
 	EndLivestream(context.Context, *EndLivestreamRequest) (*Livestream, error)
 	FindLivestream(context.Context, *FindLivestreamRequest) (*Livestream, error)
 	SearchLivestream(context.Context, *SearchLivestreamsRequest) (*Livestreams, error)
-	mustEmbedUnimplementedLivetreamServiceServer()
+	mustEmbedUnimplementedLivestreamServiceServer()
 }
 
-// UnimplementedLivetreamServiceServer must be embedded to have
+// UnimplementedLivestreamServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedLivetreamServiceServer struct{}
+type UnimplementedLivestreamServiceServer struct{}
 
-func (UnimplementedLivetreamServiceServer) CreateLivestream(context.Context, *CreateLivestreamRequest) (*Livestream, error) {
+func (UnimplementedLivestreamServiceServer) CreateLivestream(context.Context, *CreateLivestreamRequest) (*Livestream, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateLivestream not implemented")
 }
-func (UnimplementedLivetreamServiceServer) EndLivestream(context.Context, *EndLivestreamRequest) (*Livestream, error) {
+func (UnimplementedLivestreamServiceServer) EndLivestream(context.Context, *EndLivestreamRequest) (*Livestream, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EndLivestream not implemented")
 }
-func (UnimplementedLivetreamServiceServer) FindLivestream(context.Context, *FindLivestreamRequest) (*Livestream, error) {
+func (UnimplementedLivestreamServiceServer) FindLivestream(context.Context, *FindLivestreamRequest) (*Livestream, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FindLivestream not implemented")
 }
-func (UnimplementedLivetreamServiceServer) SearchLivestream(context.Context, *SearchLivestreamsRequest) (*Livestreams, error) {
+func (UnimplementedLivestreamServiceServer) SearchLivestream(context.Context, *SearchLivestreamsRequest) (*Livestreams, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchLivestream not implemented")
 }
-func (UnimplementedLivetreamServiceServer) mustEmbedUnimplementedLivetreamServiceServer() {}
-func (UnimplementedLivetreamServiceServer) testEmbeddedByValue()                          {}
+func (UnimplementedLivestreamServiceServer) mustEmbedUnimplementedLivestreamServiceServer() {}
+func (UnimplementedLivestreamServiceServer) testEmbeddedByValue()                           {}
 
-// UnsafeLivetreamServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to LivetreamServiceServer will
+// UnsafeLivestreamServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to LivestreamServiceServer will
 // result in compilation errors.
-type UnsafeLivetreamServiceServer interface {
-	mustEmbedUnimplementedLivetreamServiceServer()
+type UnsafeLivestreamServiceServer interface {
+	mustEmbedUnimplementedLivestreamServiceServer()
 }
 
-func RegisterLivetreamServiceServer(s grpc.ServiceRegistrar, srv LivetreamServiceServer) {
-	// If the following call pancis, it indicates UnimplementedLivetreamServiceServer was
+func RegisterLivestreamServiceServer(s grpc.ServiceRegistrar, srv LivestreamServiceServer) {
+	// If the following call pancis, it indicates UnimplementedLivestreamServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&LivetreamService_ServiceDesc, srv)
+	s.RegisterService(&LivestreamService_ServiceDesc, srv)
 }
 
-func _LivetreamService_CreateLivestream_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _LivestreamService_CreateLivestream_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateLivestreamRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LivetreamServiceServer).CreateLivestream(ctx, in)
+		return srv.(LivestreamServiceServer).CreateLivestream(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: LivetreamService_CreateLivestream_FullMethodName,
+		FullMethod: LivestreamService_CreateLivestream_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LivetreamServiceServer).CreateLivestream(ctx, req.(*CreateLivestreamRequest))
+		return srv.(LivestreamServiceServer).CreateLivestream(ctx, req.(*CreateLivestreamRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LivetreamService_EndLivestream_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _LivestreamService_EndLivestream_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EndLivestreamRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LivetreamServiceServer).EndLivestream(ctx, in)
+		return srv.(LivestreamServiceServer).EndLivestream(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: LivetreamService_EndLivestream_FullMethodName,
+		FullMethod: LivestreamService_EndLivestream_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LivetreamServiceServer).EndLivestream(ctx, req.(*EndLivestreamRequest))
+		return srv.(LivestreamServiceServer).EndLivestream(ctx, req.(*EndLivestreamRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LivetreamService_FindLivestream_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _LivestreamService_FindLivestream_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(FindLivestreamRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LivetreamServiceServer).FindLivestream(ctx, in)
+		return srv.(LivestreamServiceServer).FindLivestream(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: LivetreamService_FindLivestream_FullMethodName,
+		FullMethod: LivestreamService_FindLivestream_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LivetreamServiceServer).FindLivestream(ctx, req.(*FindLivestreamRequest))
+		return srv.(LivestreamServiceServer).FindLivestream(ctx, req.(*FindLivestreamRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LivetreamService_SearchLivestream_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _LivestreamService_SearchLivestream_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SearchLivestreamsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LivetreamServiceServer).SearchLivestream(ctx, in)
+		return srv.(LivestreamServiceServer).SearchLivestream(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: LivetreamService_SearchLivestream_FullMethodName,
+		FullMethod: LivestreamService_SearchLivestream_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LivetreamServiceServer).SearchLivestream(ctx, req.(*SearchLivestreamsRequest))
+		return srv.(LivestreamServiceServer).SearchLivestream(ctx, req.(*SearchLivestreamsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// LivetreamService_ServiceDesc is the grpc.ServiceDesc for LivetreamService service.
+// LivestreamService_ServiceDesc is the grpc.ServiceDesc for LivestreamService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var LivetreamService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "backend.livestream_service.LivetreamService",
-	HandlerType: (*LivetreamServiceServer)(nil),
+var LivestreamService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "backend.livestream_service.LivestreamService",
+	HandlerType: (*LivestreamServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "CreateLivestream",
-			Handler:    _LivetreamService_CreateLivestream_Handler,
+			Handler:    _LivestreamService_CreateLivestream_Handler,
 		},
 		{
 			MethodName: "EndLivestream",
-			Handler:    _LivetreamService_EndLivestream_Handler,
+			Handler:    _LivestreamService_EndLivestream_Handler,
 		},
 		{
 			MethodName: "FindLivestream",
-			Handler:    _LivetreamService_FindLivestream_Handler,
+			Handler:    _LivestreamService_FindLivestream_Handler,
 		},
 		{
 			MethodName: "SearchLivestream",
-			Handler:    _LivetreamService_SearchLivestream_Handler,
+			Handler:    _LivestreamService_SearchLivestream_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

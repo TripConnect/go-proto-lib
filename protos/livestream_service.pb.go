@@ -386,8 +386,8 @@ const file_livestream_service_proto_rawDesc = "" +
 	"\x15FindLivestreamRequest\x12#\n" +
 	"\rlivestream_id\x18\x01 \x01(\tR\flivestreamId\";\n" +
 	"\x14EndLivestreamRequest\x12#\n" +
-	"\rlivestream_id\x18\x01 \x01(\tR\flivestreamId2\xd6\x03\n" +
-	"\x10LivetreamService\x12q\n" +
+	"\rlivestream_id\x18\x01 \x01(\tR\flivestreamId2\xd7\x03\n" +
+	"\x11LivestreamService\x12q\n" +
 	"\x10CreateLivestream\x123.backend.livestream_service.CreateLivestreamRequest\x1a&.backend.livestream_service.Livestream\"\x00\x12k\n" +
 	"\rEndLivestream\x120.backend.livestream_service.EndLivestreamRequest\x1a&.backend.livestream_service.Livestream\"\x00\x12m\n" +
 	"\x0eFindLivestream\x121.backend.livestream_service.FindLivestreamRequest\x1a&.backend.livestream_service.Livestream\"\x00\x12s\n" +
@@ -418,14 +418,14 @@ var file_livestream_service_proto_goTypes = []any{
 var file_livestream_service_proto_depIdxs = []int32{
 	6, // 0: backend.livestream_service.Livestream.create_time:type_name -> google.protobuf.Timestamp
 	0, // 1: backend.livestream_service.Livestreams.livestreams:type_name -> backend.livestream_service.Livestream
-	2, // 2: backend.livestream_service.LivetreamService.CreateLivestream:input_type -> backend.livestream_service.CreateLivestreamRequest
-	5, // 3: backend.livestream_service.LivetreamService.EndLivestream:input_type -> backend.livestream_service.EndLivestreamRequest
-	4, // 4: backend.livestream_service.LivetreamService.FindLivestream:input_type -> backend.livestream_service.FindLivestreamRequest
-	3, // 5: backend.livestream_service.LivetreamService.SearchLivestream:input_type -> backend.livestream_service.SearchLivestreamsRequest
-	0, // 6: backend.livestream_service.LivetreamService.CreateLivestream:output_type -> backend.livestream_service.Livestream
-	0, // 7: backend.livestream_service.LivetreamService.EndLivestream:output_type -> backend.livestream_service.Livestream
-	0, // 8: backend.livestream_service.LivetreamService.FindLivestream:output_type -> backend.livestream_service.Livestream
-	1, // 9: backend.livestream_service.LivetreamService.SearchLivestream:output_type -> backend.livestream_service.Livestreams
+	2, // 2: backend.livestream_service.LivestreamService.CreateLivestream:input_type -> backend.livestream_service.CreateLivestreamRequest
+	5, // 3: backend.livestream_service.LivestreamService.EndLivestream:input_type -> backend.livestream_service.EndLivestreamRequest
+	4, // 4: backend.livestream_service.LivestreamService.FindLivestream:input_type -> backend.livestream_service.FindLivestreamRequest
+	3, // 5: backend.livestream_service.LivestreamService.SearchLivestream:input_type -> backend.livestream_service.SearchLivestreamsRequest
+	0, // 6: backend.livestream_service.LivestreamService.CreateLivestream:output_type -> backend.livestream_service.Livestream
+	0, // 7: backend.livestream_service.LivestreamService.EndLivestream:output_type -> backend.livestream_service.Livestream
+	0, // 8: backend.livestream_service.LivestreamService.FindLivestream:output_type -> backend.livestream_service.Livestream
+	1, // 9: backend.livestream_service.LivestreamService.SearchLivestream:output_type -> backend.livestream_service.Livestreams
 	6, // [6:10] is the sub-list for method output_type
 	2, // [2:6] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
