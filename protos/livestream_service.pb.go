@@ -108,7 +108,7 @@ func (x *Livestream) GetCreateTime() *timestamppb.Timestamp {
 
 type Livestreams struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Livestreams   *Livestream            `protobuf:"bytes,1,opt,name=livestreams,proto3" json:"livestreams,omitempty"`
+	Livestreams   []*Livestream          `protobuf:"bytes,1,rep,name=livestreams,proto3" json:"livestreams,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -143,7 +143,7 @@ func (*Livestreams) Descriptor() ([]byte, []int) {
 	return file_livestream_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *Livestreams) GetLivestreams() *Livestream {
+func (x *Livestreams) GetLivestreams() []*Livestream {
 	if x != nil {
 		return x.Livestreams
 	}
@@ -373,7 +373,7 @@ const file_livestream_service_proto_rawDesc = "" +
 	"\vcreate_time\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
 	"createTime\"W\n" +
 	"\vLivestreams\x12H\n" +
-	"\vlivestreams\x18\x01 \x01(\v2&.backend.livestream_service.LivestreamR\vlivestreams\"M\n" +
+	"\vlivestreams\x18\x01 \x03(\v2&.backend.livestream_service.LivestreamR\vlivestreams\"M\n" +
 	"\x17CreateLivestreamRequest\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x1c\n" +
 	"\tthumbnail\x18\x02 \x01(\tR\tthumbnail\"\x84\x01\n" +
