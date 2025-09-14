@@ -32,7 +32,7 @@ type ChatServiceClient interface {
 	CreateLivestream(ctx context.Context, in *CreateLivestreamRequest, opts ...grpc.CallOption) (*Livestream, error)
 	EndLivestream(ctx context.Context, in *EndLivestreamRequest, opts ...grpc.CallOption) (*Livestream, error)
 	FindLivestream(ctx context.Context, in *FindLivestreamRequest, opts ...grpc.CallOption) (*Livestream, error)
-	SearchLivestream(ctx context.Context, in *SearchConversationsRequest, opts ...grpc.CallOption) (*Livestreams, error)
+	SearchLivestream(ctx context.Context, in *SearchLivestreamsRequest, opts ...grpc.CallOption) (*Livestreams, error)
 }
 
 type chatServiceClient struct {
@@ -73,7 +73,7 @@ func (c *chatServiceClient) FindLivestream(ctx context.Context, in *FindLivestre
 	return out, nil
 }
 
-func (c *chatServiceClient) SearchLivestream(ctx context.Context, in *SearchConversationsRequest, opts ...grpc.CallOption) (*Livestreams, error) {
+func (c *chatServiceClient) SearchLivestream(ctx context.Context, in *SearchLivestreamsRequest, opts ...grpc.CallOption) (*Livestreams, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Livestreams)
 	err := c.cc.Invoke(ctx, ChatService_SearchLivestream_FullMethodName, in, out, cOpts...)
@@ -90,7 +90,7 @@ type ChatServiceServer interface {
 	CreateLivestream(context.Context, *CreateLivestreamRequest) (*Livestream, error)
 	EndLivestream(context.Context, *EndLivestreamRequest) (*Livestream, error)
 	FindLivestream(context.Context, *FindLivestreamRequest) (*Livestream, error)
-	SearchLivestream(context.Context, *SearchConversationsRequest) (*Livestreams, error)
+	SearchLivestream(context.Context, *SearchLivestreamsRequest) (*Livestreams, error)
 	mustEmbedUnimplementedChatServiceServer()
 }
 
@@ -110,7 +110,7 @@ func (UnimplementedChatServiceServer) EndLivestream(context.Context, *EndLivestr
 func (UnimplementedChatServiceServer) FindLivestream(context.Context, *FindLivestreamRequest) (*Livestream, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FindLivestream not implemented")
 }
-func (UnimplementedChatServiceServer) SearchLivestream(context.Context, *SearchConversationsRequest) (*Livestreams, error) {
+func (UnimplementedChatServiceServer) SearchLivestream(context.Context, *SearchLivestreamsRequest) (*Livestreams, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchLivestream not implemented")
 }
 func (UnimplementedChatServiceServer) mustEmbedUnimplementedChatServiceServer() {}
@@ -189,7 +189,7 @@ func _ChatService_FindLivestream_Handler(srv interface{}, ctx context.Context, d
 }
 
 func _ChatService_SearchLivestream_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SearchConversationsRequest)
+	in := new(SearchLivestreamsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -201,7 +201,7 @@ func _ChatService_SearchLivestream_Handler(srv interface{}, ctx context.Context,
 		FullMethod: ChatService_SearchLivestream_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChatServiceServer).SearchLivestream(ctx, req.(*SearchConversationsRequest))
+		return srv.(ChatServiceServer).SearchLivestream(ctx, req.(*SearchLivestreamsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

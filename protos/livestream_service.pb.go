@@ -202,7 +202,7 @@ func (x *CreateLivestreamRequest) GetThumbnail() string {
 	return ""
 }
 
-type SearchConversationsRequest struct {
+type SearchLivestreamsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Term          string                 `protobuf:"bytes,1,opt,name=term,proto3" json:"term,omitempty"`
 	Status        string                 `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
@@ -210,20 +210,20 @@ type SearchConversationsRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SearchConversationsRequest) Reset() {
-	*x = SearchConversationsRequest{}
+func (x *SearchLivestreamsRequest) Reset() {
+	*x = SearchLivestreamsRequest{}
 	mi := &file_livestream_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SearchConversationsRequest) String() string {
+func (x *SearchLivestreamsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SearchConversationsRequest) ProtoMessage() {}
+func (*SearchLivestreamsRequest) ProtoMessage() {}
 
-func (x *SearchConversationsRequest) ProtoReflect() protoreflect.Message {
+func (x *SearchLivestreamsRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_livestream_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -235,19 +235,19 @@ func (x *SearchConversationsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SearchConversationsRequest.ProtoReflect.Descriptor instead.
-func (*SearchConversationsRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use SearchLivestreamsRequest.ProtoReflect.Descriptor instead.
+func (*SearchLivestreamsRequest) Descriptor() ([]byte, []int) {
 	return file_livestream_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *SearchConversationsRequest) GetTerm() string {
+func (x *SearchLivestreamsRequest) GetTerm() string {
 	if x != nil {
 		return x.Term
 	}
 	return ""
 }
 
-func (x *SearchConversationsRequest) GetStatus() string {
+func (x *SearchLivestreamsRequest) GetStatus() string {
 	if x != nil {
 		return x.Status
 	}
@@ -360,19 +360,19 @@ const file_livestream_service_proto_rawDesc = "" +
 	"\vlivestreams\x18\x01 \x01(\v2&.backend.livestream_service.LivestreamR\vlivestreams\"M\n" +
 	"\x17CreateLivestreamRequest\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x1c\n" +
-	"\tthumbnail\x18\x02 \x01(\tR\tthumbnail\"H\n" +
-	"\x1aSearchConversationsRequest\x12\x12\n" +
+	"\tthumbnail\x18\x02 \x01(\tR\tthumbnail\"F\n" +
+	"\x18SearchLivestreamsRequest\x12\x12\n" +
 	"\x04term\x18\x01 \x01(\tR\x04term\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\tR\x06status\"<\n" +
 	"\x15FindLivestreamRequest\x12#\n" +
 	"\rlivestream_id\x18\x01 \x01(\tR\flivestreamId\";\n" +
 	"\x14EndLivestreamRequest\x12#\n" +
-	"\rlivestream_id\x18\x01 \x01(\tR\flivestreamId2\xd3\x03\n" +
+	"\rlivestream_id\x18\x01 \x01(\tR\flivestreamId2\xd1\x03\n" +
 	"\vChatService\x12q\n" +
 	"\x10CreateLivestream\x123.backend.livestream_service.CreateLivestreamRequest\x1a&.backend.livestream_service.Livestream\"\x00\x12k\n" +
 	"\rEndLivestream\x120.backend.livestream_service.EndLivestreamRequest\x1a&.backend.livestream_service.Livestream\"\x00\x12m\n" +
-	"\x0eFindLivestream\x121.backend.livestream_service.FindLivestreamRequest\x1a&.backend.livestream_service.Livestream\"\x00\x12u\n" +
-	"\x10SearchLivestream\x126.backend.livestream_service.SearchConversationsRequest\x1a'.backend.livestream_service.Livestreams\"\x00B2Z0github.com/TripConnect/livestream_service;protosb\x06proto3"
+	"\x0eFindLivestream\x121.backend.livestream_service.FindLivestreamRequest\x1a&.backend.livestream_service.Livestream\"\x00\x12s\n" +
+	"\x10SearchLivestream\x124.backend.livestream_service.SearchLivestreamsRequest\x1a'.backend.livestream_service.Livestreams\"\x00B2Z0github.com/TripConnect/livestream_service;protosb\x06proto3"
 
 var (
 	file_livestream_service_proto_rawDescOnce sync.Once
@@ -388,13 +388,13 @@ func file_livestream_service_proto_rawDescGZIP() []byte {
 
 var file_livestream_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_livestream_service_proto_goTypes = []any{
-	(*Livestream)(nil),                 // 0: backend.livestream_service.Livestream
-	(*Livestreams)(nil),                // 1: backend.livestream_service.Livestreams
-	(*CreateLivestreamRequest)(nil),    // 2: backend.livestream_service.CreateLivestreamRequest
-	(*SearchConversationsRequest)(nil), // 3: backend.livestream_service.SearchConversationsRequest
-	(*FindLivestreamRequest)(nil),      // 4: backend.livestream_service.FindLivestreamRequest
-	(*EndLivestreamRequest)(nil),       // 5: backend.livestream_service.EndLivestreamRequest
-	(*timestamppb.Timestamp)(nil),      // 6: google.protobuf.Timestamp
+	(*Livestream)(nil),               // 0: backend.livestream_service.Livestream
+	(*Livestreams)(nil),              // 1: backend.livestream_service.Livestreams
+	(*CreateLivestreamRequest)(nil),  // 2: backend.livestream_service.CreateLivestreamRequest
+	(*SearchLivestreamsRequest)(nil), // 3: backend.livestream_service.SearchLivestreamsRequest
+	(*FindLivestreamRequest)(nil),    // 4: backend.livestream_service.FindLivestreamRequest
+	(*EndLivestreamRequest)(nil),     // 5: backend.livestream_service.EndLivestreamRequest
+	(*timestamppb.Timestamp)(nil),    // 6: google.protobuf.Timestamp
 }
 var file_livestream_service_proto_depIdxs = []int32{
 	6, // 0: backend.livestream_service.Livestream.create_time:type_name -> google.protobuf.Timestamp
@@ -402,7 +402,7 @@ var file_livestream_service_proto_depIdxs = []int32{
 	2, // 2: backend.livestream_service.ChatService.CreateLivestream:input_type -> backend.livestream_service.CreateLivestreamRequest
 	5, // 3: backend.livestream_service.ChatService.EndLivestream:input_type -> backend.livestream_service.EndLivestreamRequest
 	4, // 4: backend.livestream_service.ChatService.FindLivestream:input_type -> backend.livestream_service.FindLivestreamRequest
-	3, // 5: backend.livestream_service.ChatService.SearchLivestream:input_type -> backend.livestream_service.SearchConversationsRequest
+	3, // 5: backend.livestream_service.ChatService.SearchLivestream:input_type -> backend.livestream_service.SearchLivestreamsRequest
 	0, // 6: backend.livestream_service.ChatService.CreateLivestream:output_type -> backend.livestream_service.Livestream
 	0, // 7: backend.livestream_service.ChatService.EndLivestream:output_type -> backend.livestream_service.Livestream
 	0, // 8: backend.livestream_service.ChatService.FindLivestream:output_type -> backend.livestream_service.Livestream
